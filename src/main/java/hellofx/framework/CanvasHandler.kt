@@ -1,5 +1,6 @@
 package hellofx.framework
 
+import hellofx.EventNames
 import hellofx.Painter
 import javafx.scene.canvas.Canvas
 import javafx.scene.canvas.GraphicsContext
@@ -16,7 +17,7 @@ class CanvasHandler(context: MainContext) {
         val prefs = context.getObj<GamePreferences>("preferences")
         canvas = Canvas(prefs.w.toDouble(), prefs.h.toDouble())
         canvas.setOnMouseClicked {
-            context.notify("onMouse", it)
+            context.notify(EventNames.onMouse, it)
         }
     }
     var thickness = 5.0
@@ -24,7 +25,7 @@ class CanvasHandler(context: MainContext) {
 
     fun drawShapes(gc: GraphicsContext) {
         painter.updateGc(gc)
-        ctxt.notify("onPaint", painter)
+        ctxt.notify(EventNames.onPaint, painter)
 
 
         thickness += 0.01

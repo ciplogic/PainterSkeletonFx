@@ -7,7 +7,7 @@ class MainContext {
         return objRepo[key] as T
     }
 
-    val router = Router()
+    private val router = Router()
     val objRepo = hashMapOf<String, Any>()
     fun notify(eventName: String, obj: Any) {
         router.call(eventName, obj)

@@ -20,7 +20,7 @@ class Gamplay(context: MainContext) {
     var stage: Stage? = null
     fun onMouseEvent(mouseEvent: MouseEvent) {
         println("Event: " + mouseEvent)
-        var upgradeChoice = UpgradeChoice(ctxt)
+        val upgradeChoice = UpgradeChoice(ctxt)
         if (stage != null)
             return
         stage = Stage(StageStyle.UNDECORATED)
@@ -33,6 +33,11 @@ class Gamplay(context: MainContext) {
             stage!!.close()
             stage = null
         })))
+
+
+        val externalForm = HelloFX::class.java.getResource("/theme.css").toExternalForm()
+
+        scene.stylesheets.add(externalForm)
 
         stage!!.scene = scene
         stage!!.show()

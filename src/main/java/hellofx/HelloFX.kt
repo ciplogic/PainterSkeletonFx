@@ -20,6 +20,11 @@ class HelloFX : Application() {
         val canvas = CanvasHandler(context)
         val scene = Scene(StackPane(canvas.canvas))
         stage.scene = scene
+        val externalForm = HelloFX::class.java.getResource("/theme.css").toExternalForm()
+
+        scene.stylesheets.add(externalForm)
+
+
         stage.show()
         animationTimer.start()
 
