@@ -6,12 +6,6 @@ import javafx.scene.canvas.GraphicsContext
 import javafx.scene.image.Image
 import javafx.scene.text.TextAlignment
 
-class GamePreferences {
-    var w: Int = 800
-    var h: Int = 600
-
-}
-
 class CanvasHandler(context: MainContext) {
     val ctxt = context
     var canvas: Canvas

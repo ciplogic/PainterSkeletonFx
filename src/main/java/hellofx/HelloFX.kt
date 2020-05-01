@@ -9,7 +9,6 @@ import javafx.scene.Scene
 import javafx.scene.layout.StackPane
 import javafx.stage.Stage
 
-
 class HelloFX : Application() {
     override fun start(stage: Stage) {
         val context = MainContext()
@@ -24,7 +23,9 @@ class HelloFX : Application() {
         stage.show()
         animationTimer.start()
 
-        context.router.register("onFrame", { canvas.drawShapes(canvas.canvas.graphicsContext2D) })
+        context.listen(EventNames.onFrame) {
+            canvas.drawShapes(canvas.canvas.graphicsContext2D)
+        }
         var gameplay = Gamplay(context)
     }
 

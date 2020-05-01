@@ -12,4 +12,18 @@ class MainContext {
     fun notify(eventName: String, obj: Any) {
         router.call(eventName, obj)
     }
+
+    fun listen(eventName: String, action: () -> Unit) {
+        router.register(eventName) {
+            action()
+        }
+    }
+
+    fun <T> listen(eventName: String, action: (value: T) -> Unit) {
+        router.register(eventName) {
+            val tValue = it as T
+            action(tValue)
+        }
+
+    }
 }

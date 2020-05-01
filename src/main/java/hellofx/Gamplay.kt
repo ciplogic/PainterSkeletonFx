@@ -12,19 +12,29 @@ class Gamplay(context: MainContext) {
     val ctxt = context
 
     init {
-        context.router.register("onMouse", {
-            val mouseEv: MouseEvent = it as MouseEvent
-            onMouseEvent(mouseEv)
-        })
+        context.listen<MouseEvent>("onMouse") {
+            onMouseEvent(it)
+        }
     }
 
+    var stage: Stage? = null
     fun onMouseEvent(mouseEvent: MouseEvent) {
         println("Event: " + mouseEvent)
         var upgradeChoice = UpgradeChoice(ctxt)
-        var stage = Stage(StageStyle.UNDECORATED)
-        val scene = Scene(StackPane(upgradeChoice.build()))
+        if (stage != null)
+            return
+        stage = Stage(StageStyle.UNDECORATED)
+        val scene = Scene(StackPane(upgradeChoice.build({
+            println("Experience chosen")
+            stage!!.close()
+            stage = null
+        }, {
+            println("Money chosen")
+            stage!!.close()
+            stage = null
+        })))
 
-        stage.scene = scene
-        stage.show()
+        stage!!.scene = scene
+        stage!!.show()
     }
 }
