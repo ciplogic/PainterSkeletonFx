@@ -1,13 +1,12 @@
 package hellofx
 
+import hellofx.dialogs.UpgradeChoice
 import hellofx.framework.MainContext
+import javafx.scene.Scene
 import javafx.scene.input.MouseEvent
-
-fun inRect(x: Int, y: Int, x1: Int, y1: Int, w: Int, h: Int): Boolean {
-    var x2 = x + w
-    var y2 = y + h
-    return (x >= x1) && (x <= x2) && (y >= y1) && (y <= y2)
-}
+import javafx.scene.layout.StackPane
+import javafx.stage.Stage
+import javafx.stage.StageStyle
 
 class Gamplay(context: MainContext) {
     val ctxt = context
@@ -21,6 +20,11 @@ class Gamplay(context: MainContext) {
 
     fun onMouseEvent(mouseEvent: MouseEvent) {
         println("Event: " + mouseEvent)
+        var upgradeChoice = UpgradeChoice(ctxt)
+        var stage = Stage(StageStyle.UNDECORATED)
+        val scene = Scene(StackPane(upgradeChoice.build()))
 
+        stage.scene = scene
+        stage.show()
     }
 }

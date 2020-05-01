@@ -35,6 +35,3 @@ class HelloFX : Application() {
         context.objRepo["preferences"] = prefs
     }
 }
-fun main(args: Array<String>) {
-    Application.launch(HelloFX::class.java)
-}
