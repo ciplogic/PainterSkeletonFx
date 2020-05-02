@@ -2,11 +2,9 @@ package hellofx
 
 import hellofx.dialogs.UpgradeChoice
 import hellofx.framework.MainContext
-import javafx.scene.Scene
 import javafx.scene.input.MouseEvent
 import javafx.scene.layout.StackPane
 import javafx.stage.Stage
-import javafx.stage.StageStyle
 
 class Gamplay(context: MainContext) {
     private val ctxt = context
@@ -23,23 +21,16 @@ class Gamplay(context: MainContext) {
         val upgradeChoice = UpgradeChoice(ctxt)
         if (stage != null)
             return
-        stage = Stage(StageStyle.UNDECORATED)
-        val scene = Scene(StackPane(upgradeChoice.build({
+        val mainStack = ctxt.getObj<StackPane>(ObjectNames.mainStack)
+
+        mainStack.children.add(upgradeChoice.build({
             println("Experience chosen")
-            stage!!.close()
-            stage = null
+            val lastNode = mainStack.children[mainStack.children.size - 1]
+            mainStack.children.remove(lastNode)
         }, {
             println("Money chosen")
-            stage!!.close()
-            stage = null
-        })))
-
-
-        val externalForm = HelloFX::class.java.getResource("/theme.css").toExternalForm()
-
-        scene.stylesheets.add(externalForm)
-
-        stage!!.scene = scene
-        stage!!.show()
+            val lastNode = mainStack.children[mainStack.children.size - 1]
+            mainStack.children.remove(lastNode)
+        }))
     }
 }

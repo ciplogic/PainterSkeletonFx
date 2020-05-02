@@ -19,11 +19,10 @@ class HelloFX : Application() {
 
         val canvas = CanvasHandler(context)
         val mainStackPane = StackPane(canvas.canvas)
-        context.setObj("stackPane", mainStackPane)
+        context.setObj(ObjectNames.mainStack, mainStackPane)
         val scene = Scene(mainStackPane)
         stage.scene = scene
         val externalForm = HelloFX::class.java.getResource("/theme.css").toExternalForm()
-
         scene.stylesheets.add(externalForm)
 
 

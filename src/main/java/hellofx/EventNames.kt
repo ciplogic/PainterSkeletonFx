@@ -5,3 +5,7 @@ object EventNames {
     val onMouse = "onMouse"
     val onFrame = "onFrame"
 }
+
+object ObjectNames {
+    val mainStack = "mainStack"
+}
