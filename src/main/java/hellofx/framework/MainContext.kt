@@ -1,12 +1,6 @@
 package hellofx.framework
 
 class MainContext {
-    fun <T> getObj(key: String): T {
-        if (!objRepo.containsKey(key))
-            throw RuntimeException("No key: " + key)
-        return objRepo[key] as T
-    }
-
     private val router = Router()
     val objRepo = hashMapOf<String, Any>()
     fun notify(eventName: String, obj: Any) {
@@ -26,4 +20,14 @@ class MainContext {
         }
 
     }
+
+    fun setObj(objName: String, obj: Any) {
+        objRepo[objName] = obj
+    }
+    fun <T> getObj(key: String): T {
+        if (!objRepo.containsKey(key))
+            throw RuntimeException("No key: " + key)
+        return objRepo[key] as T
+    }
+
 }
