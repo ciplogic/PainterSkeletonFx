@@ -6,7 +6,7 @@ import javafx.scene.paint.Color
 import javafx.scene.text.TextAlignment
 
 class Painter {
-    lateinit var gc: GraphicsContext
+    private lateinit var gc: GraphicsContext
     fun updateGc(gc: GraphicsContext) {
         this.gc = gc
     }

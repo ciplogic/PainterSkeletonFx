@@ -1,10 +1,8 @@
 package hellofx.framework
 
-import java.util.function.Consumer
-
 class Router
 {
-    val eventRepo = hashMapOf<String, ArrayList<(Any)->Unit>>()
+    private val eventRepo = hashMapOf<String, ArrayList<(Any)->Unit>>()
     fun register(eventName: String, consumer: (Any)->Unit) {
         if (!eventRepo.containsKey(eventName)){
             eventRepo[eventName] = arrayListOf()

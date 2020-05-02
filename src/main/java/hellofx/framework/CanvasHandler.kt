@@ -8,10 +8,10 @@ import javafx.scene.image.Image
 import javafx.scene.text.TextAlignment
 
 class CanvasHandler(context: MainContext) {
-    val ctxt = context
+    private val ctxt = context
     var canvas: Canvas
-    val img = Image("tree.png")
-    val boxImg = Image("box.png")
+    private val img = Image("tree.png")
+    private val boxImg = Image("box.png")
 
     init {
         val prefs = context.getObj<GamePreferences>("preferences")
@@ -20,8 +20,8 @@ class CanvasHandler(context: MainContext) {
             context.notify(EventNames.onMouse, it)
         }
     }
-    var thickness = 5.0
-    var painter = Painter()
+    private var thickness = 5.0
+    private var painter = Painter()
 
     fun drawShapes(gc: GraphicsContext) {
         painter.updateGc(gc)

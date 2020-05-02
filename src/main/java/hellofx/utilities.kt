@@ -15,8 +15,6 @@ fun inRect(x: Int, y: Int, x1: Int, y1: Int, w: Int, h: Int): Boolean {
 }
 
 fun addVButtonImageWithText(text: String, img: String, action: () -> Unit): Button {
-
-
     val imgCtrl = ImageView(Image(img))
     val textLbl = Label(text)
 

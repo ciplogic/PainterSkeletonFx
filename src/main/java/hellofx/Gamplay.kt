@@ -9,16 +9,16 @@ import javafx.stage.Stage
 import javafx.stage.StageStyle
 
 class Gamplay(context: MainContext) {
-    val ctxt = context
+    private val ctxt = context
 
     init {
-        context.listen<MouseEvent>("onMouse") {
+        context.listen<MouseEvent>(EventNames.onMouse) {
             onMouseEvent(it)
         }
     }
 
-    var stage: Stage? = null
-    fun onMouseEvent(mouseEvent: MouseEvent) {
+    private var stage: Stage? = null
+    private fun onMouseEvent(mouseEvent: MouseEvent) {
         println("Event: " + mouseEvent)
         val upgradeChoice = UpgradeChoice(ctxt)
         if (stage != null)
